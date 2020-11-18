@@ -83,6 +83,53 @@ object ObjectOrientation extends App {
     val canLiveIndefinitely = false
   }
 
-  val animalCanLiveForever = Animal.canLiveIndefinitely // "static" fields/methods
+  val animalCanLiveForever = Animal.canLiveIndefinitely // "static" fields/methods in Java or C++
+
+  /*
+   case classes = lightweight data structures with some boilerplate
+   - sensible equals and hash code
+   - serialization
+   - companion with apply
+   - pattern matching
+   */
+  case class Person(name: String, age: Int)
+  // may be constructed without the keyword "new"
+  val bob = Person("Bob", 54) // this is equivalent to Person.apply("Bob", 54)
+
+  // exceptions
+  try {
+    // code that can throw
+    val z: String = null
+    x.length
+  } catch {
+    case e: Exception => "some faulty error message"
+  } finally {
+    // execute some code no matter what
+  }
+
+  // generics
+  abstract class MyList[T] {
+    def head: T
+    def tail: MyList[T]
+  }
+
+  // using a generic with a concrete type
+  val aList: List[Int] = List(1,2,3) // equivalent to List.apply(1,2,3)
+  val first = aList.head
+  val rest = aList.tail
+  val aStringList = List("hello", "Scala")
+  val firstString = aStringList.head
+
+  // Point #1: in Scala we usually operate with IMMUTABLE values/objects
+  // Any modification to an object must return ANOTHER object
+  /*
+    Benefits:
+    1) works miracles in multithreaded/distributed environments
+    2) helps making sense of code ("reasoning about")
+   */
+  val reversedList = aList reverse // returns a NEW list
+
+  // Point #2: Scala is closest to the Object Oriented ideal
+
 
 }
