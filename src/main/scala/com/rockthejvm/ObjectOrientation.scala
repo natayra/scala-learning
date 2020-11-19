@@ -39,7 +39,7 @@ object ObjectOrientation extends App {
   // single-class inheritance, multi-trait "mixing"
   class Crocodile extends Animal with Carnivore {
     override def eat(animal: Animal): Unit = println("I'm eating you, animal!")
-    def ?!(thought: Strimg): Unit = println(s"I was thinking: $thought")
+    def ?!(thought: String): Unit = println(s"I was thinking: $thought")
   }
 
   val aCroc = new Crocodile
@@ -99,7 +99,7 @@ object ObjectOrientation extends App {
   // exceptions
   try {
     // code that can throw
-    val z: String = null
+    val x: String = null
     x.length
   } catch {
     case e: Exception => "some faulty error message"
